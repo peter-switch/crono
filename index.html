@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- by PeterSwitch - email info@electricoo.com =============== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1A0933">
+    <title>Cronometro online con sonido para series</title>
+    <meta name="description" content="Cronometro online para hacer series, tabatas y programar entrenamientos con sonido"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+
+</head>
+
+
+
+
+
+
+
+<body>
+
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Fin del entrenamiento</h5>
+                </div>
+
+                <div class="modal-body">
+                    <img class="img-fluid" src="https://i.giphy.com/media/3oFzmrqh43AvYwn9Cw/giphy.webp" width="480"
+                        alt="Fin">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="document.querySelector('.modal').classList.remove('show');document.querySelector('.modal').style.display = '';">X</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+
+
+    <!-- Crono -->
+
+    <div class="container">
+        <br>
+        <div class="row">
+
+
+            <div class="col-md-4">
+
+
+            </div>
+
+
+
+            <div class="col-md-4 d-grid gap-2">
+
+
+                <h2 style="padding: 0.2rem 0; font-size: 4rem;" class="text-center"><span id="minutos">--</span> : <span
+                        id="segundos">--</span></h2>
+
+                <h3 class="text-center">&nbsp;<span id="texto"></span>&nbsp;</h3>
+
+                <div class="row">
+                    <div class="col d-grid gap-2">
+                        <label class="fs-5">Series:</label>
+                        <select class="form-control" id="varRondas">
+                            <option value="1">1 serie</option>
+                            <option value="2">2 series</option>
+                            <option value="3">3 series</option>
+                            <option value="4">4 series</option>
+                            <option value="5">5 series</option>
+                            <option value="6">6 series</option>
+                            <option value="7">7 series</option>
+                            <option value="8">8 series</option>
+                            <option value="9">9 series</option>
+                            <option value="10">10 series</option>
+                        </select>
+                    </div>
+
+                    <div class="col d-grid gap-2">
+                        <label class="fs-5">Ejercicios:</label>
+                        <select class="form-control" id="varEjercicios">
+                            <option value="1">1 por serie</option>
+                            <option value="2">2 por serie</option>
+                            <option value="3">3 por serie</option>
+                            <option value="4">4 por serie</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="fs-5">Tiempo ejercicio:</label>
+                <select class="form-control" id="varTiempo">
+                    <option value="3">3 segundos</option>
+                    <option value="10">10 segundos</option>
+                    <option value="12">12 segundos</option>
+                    <option value="14">14 segundos</option>
+                    <option value="16">16 segundos</option>
+                    <option value="18">18 segundos</option>
+                    <option value="20">20 segundos</option>
+                    <option value="30">30 segundos</option>
+                    <option value="40">40 segundos</option>
+                    <option value="50">50 segundos</option>
+                    <option value="60">1 minuto</option>
+                    <option value="120">2 minutos</option>
+                </select>
+
+                <label class="fs-5">Descanso ejercicio:</label>
+                <select class="form-control" id="varDescanso">
+                    <option value="5">5 segundos</option>
+                    <option value="10">10 segundos</option>
+                    <option value="15">15 segundos</option>
+                    <option value="30">30 segundos</option>
+                    <option value="40">40 segundos</option>
+                    <option value="60">1 minuto</option>
+                    <option value="120">2 minutos</option>
+
+                </select>
+
+
+
+                <br>
+                <div class="row">
+
+                    <div class="col d-grid gap-2">
+                        <input class="btn btn-primary" type="button" onclick="startPause();" id="btnStart" value="PLAY">
+                    </div>
+
+                    <div class="col d-grid gap-2">
+                        <input class="btn btn-primary" type="button" onclick="reset()" value="RESET">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Crono -->
+
+    <div class="pt-5 mt-5 pb-2 text-center">
+        <p class="small text-muted">@ <span id="ano">--</span> by NahiaPains && PeterSwitch</p>
+        <!-- by PeterSwitch - email info@electricoo.com =============== -->
+    </div>
+
+
+
+
+
+<footer>
+
+    <script src="./js/crono.js"></script> <!-- Cronometro js -->
+    <script src="./js/year.js"></script> <!-- Año footer js -->
+
+</footer>
+</body>
+</html>

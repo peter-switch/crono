@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crono training</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+
+    <script>
+
+window.addEventListener("load", function() {
+    var b = document.getElementById('texto');
+    setInterval(function() {
+        b.style.display = (b.style.display == 'none' ? '' : 'none');
+    }, 200);
+}, false);
+
+
+        seg = 0;
+        min = 0;
+
+
+        contador_segEJ = 0;
+        contador_rondas = 0;
+        estado = 'serie';
+
+
+        //tiempo = 3;
+        //descanso = 5;
+
+        //ejercicios = 1;
+
+        //rondas = 1;
+
+
+   let serieAudio = new Audio('audio/serie.ogg');
+   let descansoAudio = new Audio('audio/descanso.mp3');
+   let finAudio = new Audio('audio/fin.mp3');
+
+
+
+
+        function startPause() {
+
+            if (btnStart.value == "PLAY") {
+
+                tiempo = document.getElementById("varTiempo").value;
+                descanso = document.getElementById("varDescanso").value;
+                ejercicios = document.getElementById("varEjercicios").value;
+                rondas = document.getElementById("varRondas").value;
+                minutos.innerHTML = '00';
+                segundos.innerHTML = '00';
+                document.getElementById("btnStart").value = "PAUSE";
+                
+
+                start();
+
+            } else {
+
+                document.getElementById("btnStart").value = "PLAY";
+                clearInterval(intervaloID01);
+
+            }
+
+        }
+
+
+
+        function reset() {
+
+            document.getElementById("btnStart").value = "PLAY";
+            clearInterval(intervaloID01);
+            seg = 0;
+            min = 0;
+
+            contador_segEJ = 0;
+            contador_rondas = 0;
+            estado = 'serie';
+
+            segundos.innerHTML = '--';
+            minutos.innerHTML = '--';
+            texto.innerHTML = '' //texto serie
+        }
+
+
+
+
+
+
+        function start() {
+
+           
+
+            intervaloID01 = setInterval(function () {
+
+                if (contador_rondas < rondas) {
+
+                    if ((contador_segEJ) < ejercicios) {
+
+                        
+                        if (estado == 'serie') {
+                            document.getElementById("texto").classList.add('text-secondary');
+
+                            serieAudio.play(); // Audio comienza la serie
+                        
+                            texto.innerHTML = '¡Serie'+' '+ (contador_rondas+1) +'!' //texto serie
+                            
+
+
+                            if (seg <= tiempo) {
+
+                                if (seg < 60) {
+                                    if (seg < 10) { segundos.innerHTML = '0' + seg++; } else { segundos.innerHTML = seg++; }
+
+                                } else {
+                                    seg = 0;
+                                    segundos.innerHTML = '0' + seg++;
+                                    min++;
+                                    if (min < 10) { minutos.innerHTML = '0' + min; } else { minutos.innerHTML = min; }
+
+                                }
+
+
+                            } else {
+                                estado = 'descanso';
+                                descansoAudio.play(); // Audio comienza la serie
+                                texto.innerHTML = '' //texto serie
+                                
+                                seg = 0;
+                                segundos.innerHTML = '0' + seg++;;
+                                tiempoSerie = tiempo;
+                                tiempo = descanso;
+
+                            }
+
+                        
+
+                        } else if (estado == 'descanso') {
+
+                            
+                            
+                     
+                            if (seg <= tiempo) {
+
+                                if (seg < 10) { segundos.innerHTML = '0' + seg++; } else { segundos.innerHTML = seg++; }
+
+
+                            } else {
+                                estado = 'serie';
+                                
+                                seg = 0;
+                                segundos.innerHTML = '0' + seg++;;
+                                tiempo = tiempoSerie;
+                                contador_segEJ++; //cuenta 1 ejercicio cada vez que pasa el ciclo por aquí
+
+
+
+                            }
+
+
+                        }
+
+
+                    } else {
+
+                        contador_rondas++;
+                        contador_segEJ = 0;
+                        console.log(contador_rondas);
+
+
+                    }
+
+
+                } else {
+                   finAudio.play(); // Audio comienza la serie
+                   document.querySelector(".modal").style.display = "block"; //ventana modal en js
+                   document.querySelector(".modal").classList.add("show"); //ventana modal en js
+                   
+                    reset();
+
+                }
+
+
+            }, 1000);
+        }
+
+
+   
+
+
+   
+
+    </script>
+
+
+</head>
+
+
+
+
+
+
+
+<body>
+
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Fin del entrenamiento</h5>
+        </div>
+      
+            <div class="modal-body">
+                <img class="img-fluid" src="https://i.giphy.com/media/3oFzmrqh43AvYwn9Cw/giphy.webp" width="480" alt="Fin">
+              </div>
+       
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="document.querySelector('.modal').classList.remove('show');document.querySelector('.modal').style.display = '';">X</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal -->
+
+
+
+<!-- Crono -->
+
+    <div class="container">
+        <br><br>
+        <div class="row">
+
+
+            <div class="col-md-4">
+
+
+            </div>
+
+
+
+            <div class="col-md-4 d-grid gap-2">
+
+                
+                <h2 style="padding: 0.3rem 0; font-size: 5rem;" class="text-center"><span id="minutos">--</span> : <span
+                        id="segundos">--</span></h2>
+
+                        <h3 class="text-center">&nbsp;<span id="texto"></span>&nbsp;</h3>
+                        
+                <div class="row">
+                    <div class="col d-grid gap-2">
+                        <label class="fs-5">Series:</label>
+                        <select class="form-control" id="varRondas">
+                            <option value="1">1 serie</option>
+                            <option value="2">2 series</option>
+                            <option value="3">3 series</option>
+                            <option value="4">4 series</option>
+                            <option value="5">5 series</option>
+                            <option value="6">6 series</option>
+                            <option value="7">7 series</option>
+                            <option value="8">8 series</option>
+                            <option value="9">9 series</option>
+                            <option value="10">10 series</option>
+                        </select>
+                    </div>
+
+                    <div class="col d-grid gap-2">
+                        <label class="fs-5">Ejercicios:</label>
+                        <select class="form-control" id="varEjercicios">
+                            <option value="1">1 por serie</option>
+                            <option value="2">2 por serie</option>
+                            <option value="3">3 por serie</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="fs-5">Tiempo por cada ejercicio:</label>
+                <select class="form-control" id="varTiempo">
+                    <option value="3">3 segundos</option>
+                    <option value="10">10 segundos</option>
+                    <option value="12">12 segundos</option>
+                    <option value="14">14 segundos</option>
+                    <option value="16">16 segundos</option>
+                    <option value="18">18 segundos</option>
+                    <option value="20">20 segundos</option>
+                    <option value="30">30 segundos</option>
+                    <option value="40">40 segundos</option>
+                </select>
+
+                <label class="fs-5">Descanso de cada ejercicio:</label>
+                <select class="form-control" id="varDescanso">
+                    <option value="0">0 segundos</option>
+                    <option value="5">5 segundos</option>
+                    <option value="10">10 segundos</option>
+                    <option value="15">15 segundos</option>
+                    <option value="30">30 segundos</option>
+                    <option value="60">1 minuto</option>
+                </select>
+
+
+
+                <br>
+                <div class="row">
+
+                            <div class="col d-grid gap-2">
+                                <input class="btn btn-lg btn-primary" type="button" onclick="startPause();" id="btnStart"
+                                    value="PLAY">
+                                </div>
+
+                                <div class="col d-grid gap-2">
+                                <input class="btn btn-lg btn-primary" type="button" onclick="reset()" value="RESET">
+                            </div>
+                            
+                </div>
+
+            </div>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    </div>
+<!-- Crono -->
+
+</body>
+
+<footer class="text-center footer-style">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 footer-col">
+
+<p>@ <span id="ano">--</span> Entrena con seriedad. By PeterSwitch.</p>
+               
+            </div>
+        </div>
+    </div>
+</footer>
