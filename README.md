@@ -33,5 +33,3 @@
 2. Abre `index.html` en tu navegador.
 
 3. ¡Configura tu entrenamiento y dale al play!
-
-Creado por Peter Switch [https://github.com/peter-switch] 🏋️
