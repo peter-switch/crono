@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#1A0933">
     <title>Cronometro online con sonido para series</title>
-    <meta name="description" content="Cronometro online para hacer series, tabatas y programar entrenamientos con sonido"/>
+    <meta name="description"
+        content="Cronometro online para hacer series, tabatas y programar entrenamientos con sonido" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 
@@ -21,7 +22,7 @@
 
 
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!-- Modal -->
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -153,22 +154,26 @@
 
     <!-- Crono -->
 
-   
 
 
 
 
 
-<footer>
 
-     <div class="pt-5 mt-5 pb-2 text-center">
-        <p class="small text-muted">@ <span id="ano">--</span> by NahiaPains && PeterSwitch</p>
-        <!-- by PeterSwitch - email info@electricoo.com =============== -->
-    </div>
+    <footer class="py-5">
 
-    <script src="./js/crono.js"></script> <!-- Cronometro js -->
-    <script src="./js/year.js"></script> <!-- Año footer js -->
+        <div class="pt-2 mt-2 pb-5 text-center">
+            <p class="small">
+                @ <span id="ano">--</span> by NahiaPains &&
+                <a href="https://github.com/peter-switch" title="Github" target="_blank">PeterSwitch</a>
+            </p>
+            <!-- by PeterSwitch - email info@electricoo.com =============== -->
+        </div>
 
-</footer>
+        <script src="./js/crono.js"></script> <!-- Cronometro js -->
+        <script src="./js/year.js"></script> <!-- Año footer js -->
+
+    </footer>
 </body>
+
 </html>
