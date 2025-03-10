@@ -1,6 +1,6 @@
 # Cronómetro Online para Series y Entrenamientos ⏱️
 
-![image](https://github.com/peter-switch/images/cronometro-series-entrenamiento-tabata.jpg)
+![image](https://raw.githubusercontent.com/peter-switch/crono/refs/heads/main/images/cronometro-series-entrenamiento-tabata.jpg)
 
 Cronómetro web para programar series, tabatas y entrenamientos con alertas de sonido. Ideal para rutinas de ejercicio personalizadas.
 Puedes verlo en acción en esta url: [https://rizos.pro/crono/]
