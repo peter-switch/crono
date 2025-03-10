@@ -2,9 +2,9 @@
 
 ![image](https://raw.githubusercontent.com/peter-switch/crono/refs/heads/main/images/cronometro-series-entrenamiento-tabata.jpg)
 
-> Cronómetro para programar series, tabatas y entrenamientos con alertas de sonido. Ideal para rutinas de ejercicio personalizadas y despreocuparte de mirar el reloj constantemente.
+- Cronómetro para programar series, tabatas y entrenamientos con alertas de sonido. Ideal para rutinas de ejercicio personalizadas y despreocuparte de mirar el reloj constantemente.
 
-> Puedes verlo en acción en esta url: [https://rizos.pro/crono/]
+- Puedes verlo en acción en esta url: [https://rizos.pro/crono/]
 
 ## Características
 
@@ -34,4 +34,4 @@
 
 3. ¡Configura tu entrenamiento y dale al play!
 
-> Creado por Peter Switch [https://github.com/peter-switch] 🏋️
+Creado por Peter Switch [https://github.com/peter-switch] 🏋️
